@@ -481,7 +481,7 @@ How can we define a sampler for a Dirichlet distribution?
     (map (fn [x] (/ x sum)) params)))
 
 (defn sample-gamma [shape scale]
-  (apply + (repeat (fn [] (- (Math/log (rand)))) shape)))
+  (* scale (apply + (repeat (fn [] (- (Math/log (rand)))) shape))))
 
 (defn sample-dirichlet [pseudos]
   (let [gammas (map (fn [sh]
